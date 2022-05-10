@@ -1,24 +1,3 @@
-# bigchaindb-example
+# example-bigchaindb
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+![image](https://user-images.githubusercontent.com/36519974/167564128-64c11fb4-1829-4392-b626-be590de35118.png)
