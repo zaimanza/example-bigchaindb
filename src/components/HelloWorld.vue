@@ -677,7 +677,7 @@ export default {
 
     async updateParentAsset(parentAssetId, childAsset) {
       console.log("updateParentAsset_start")
-      console.log(parentAssetId)
+      console.log(parentAssetId)// parent id is the original asset of the data somewhat like a table
       console.log(childAsset)
 
       let txCreated = await this.fetchLatestTransaction(parentAssetId)
@@ -686,8 +686,11 @@ export default {
       console.log(txCreated)
 
       let updatedMetadata = txCreated.metadata.data
+      console.log("updatedMetadata_start")
+      console.log(updatedMetadata)
       updatedMetadata.push({ id: childAsset.id, name: childAsset.metadata.areaName })
-
+      console.log("updatedMetadata_start_1")
+      console.log(updatedMetadata)
       const assetTx = BigchainDB.Transaction.makeTransferTransaction(
         [
           {
@@ -748,21 +751,28 @@ export default {
     },
 
     async getParentAsset(assetId, mode) {
+      console.log("assetId_print")
+      console.log(assetId)
       let retrievedTransaction = await conn.searchAssets(assetId)
       let data = {}
-
+      console.log("retrievedTransaction_print")
+      console.log(retrievedTransaction)
       data.asset = retrievedTransaction[0]
       let metadata = await this.getSortedTransaction(assetId)
+      console.log("metadata_print")
+      console.log(metadata)
       data.metadata = this.isArray(metadata) ? metadata[0].metadata : metadata.data
 
       const assets = metadata.data
-
+      console.log("assets_print")
+      console.log(assets)
       this.zones = []
       this.buildings = []
 
       assets.forEach(async asset => {
         let data = await this.fetchLatestTransaction(asset.id)
-
+        console.log("each_asset_print")
+        console.log(data)
         if (mode === 'zone') {
           this.zones.push({
             rootId: data.asset.id,
@@ -773,7 +783,7 @@ export default {
         } else {
           this.buildings.push({
             rootId: data.asset.id,
-            asset_id: data.id,
+            asset_id: data.id,  
             zone_id: data.metadata.zoneId,
             metadata: data.metadata,
             owner: data.inputs[0].owners_before[0],
