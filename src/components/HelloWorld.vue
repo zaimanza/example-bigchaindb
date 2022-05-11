@@ -389,6 +389,7 @@
 
 <script>
 import * as bip39 from '../bundle/bip39.bundle'
+import bigChainCall from '../bigchaindb'
 
 const API_PATH = 'https://test.ipdb.io/api/v1/'
 const conn = new BigchainDB.Connection(API_PATH)
@@ -465,6 +466,7 @@ export default {
   },
 
   mounted() {
+    bigChainCall()
     // this.createParentAsset()
     this.getAllZone()
     this.getAllBuilding()
