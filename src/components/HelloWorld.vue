@@ -391,7 +391,10 @@
 import * as bip39 from '../bundle/bip39.bundle'
 import bigChainCall from '../bigchaindb'
 
-const API_PATH = 'https://test.ipdb.io/api/v1/'
+const API_PATH = 'http://localhost:9984/api/v1/'
+// 0.0.0.0:9984
+
+// const API_PATH = 'https://test.ipdb.io/api/v1/'
 const conn = new BigchainDB.Connection(API_PATH)
 
 export default {
